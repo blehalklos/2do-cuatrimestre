@@ -50,3 +50,20 @@
 	<stdio.h>
 	<stdlib.h>
 
+1536150827 source:c:\users\alumno\desktop\asd\tps\tp1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
+1536155574 source:c:\users\alumno\desktop\asd\tps\tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"funciones.c"
+
+1536150827 c:\users\alumno\desktop\asd\tps\tp1\funciones.h
+	"funciones.c"
+
+1536150827 c:\users\alumno\desktop\asd\tps\tp1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
