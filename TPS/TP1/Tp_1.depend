@@ -67,3 +67,20 @@
 	<stdio.h>
 	<stdlib.h>
 
+1536329480 source:c:\users\alumno\desktop\123456\tps\tp1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
+1536328967 source:c:\users\alumno\desktop\123456\tps\tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"funciones.c"
+
+1536329090 c:\users\alumno\desktop\123456\tps\tp1\funciones.h
+	"funciones.c"
+
+1536329480 c:\users\alumno\desktop\123456\tps\tp1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
