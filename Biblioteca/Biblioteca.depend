@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1525833293 source:c:\users\ruby\desktop\biblioteca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1525833589 c:\users\ruby\desktop\biblioteca\funciones.h
+
+1525833564 c:\users\ruby\desktop\biblioteca\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
+1525833564 source:c:\users\ruby\desktop\biblioteca\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
+1525833293 source:n:\biblioteca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1525837452 n:\biblioteca\funciones.h
+
+1525837832 source:f:\biblioteca\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525833293 source:f:\biblioteca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1525837452 f:\biblioteca\funciones.h
+
