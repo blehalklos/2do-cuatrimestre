@@ -178,7 +178,7 @@ int validarInt(char aux[])
 
 /*float validarNumeroFlotante(char aux[])
 {
-    /*sueldo=validarNumeroFlotante("ingrese un sueldo: ")
+    sueldo=validarNumeroFlotante("ingrese un sueldo: ")
     int validar;
     int numero;
     int i;

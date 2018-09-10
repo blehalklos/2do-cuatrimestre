@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1525878708 source:f:\klosowskiluisadan1a\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525878708 source:f:\klosowskiluisadan1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1525878522 f:\klosowskiluisadan1a\funciones.h
+
+1525878708 source:e:\klosowskiluisadan1a\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1525878708 source:e:\klosowskiluisadan1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1525878522 e:\klosowskiluisadan1a\funciones.h
+
