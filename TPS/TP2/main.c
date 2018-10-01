@@ -1,275 +1,439 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define CANT 20
+#include <conio.h>
 
-typedef struct //Definida estructura
+typedef struct
 {
-    int id;
-    char name[51];
-    char lastName[51];
+    int Id;
+    char name[20];
+    char lastName[20];
     float salary;
     int sector;
     int isEmpty;
+} Employee;
 
-}Employee;
+typedef struct{
+    int id;
+    char description[20];
+}Sector;
 
-void intializeEmployee(Employee vec[], int CANT)
-void addEmployee(Employee vec[], int CANT)
-void removeEmployee(Employee vec[], int CANT)
-void findEmployeeById(Employee vec[], int CANT, int id)
-void sortEmployee(Employee vec[], int CANT)
 
+void initEmployees( Employee x[], int tam);
+int findAvailable( Employee x[], int tam);
+int findEmployeeById(Employee x[], int tam, int Id);
+void printEmployee(Employee emp, Sector sectors[], int tamSector);
+void sortEmployeeByName(Employee nomina[], int tam, Sector sectors[], int tamSector);
+void addEmployees(Employee empleados[], int tam, Sector sectors[], int tamSector);
+void removeEmployee(Employee *empleados, int tam, Sector sectors[], int tamSector);
+void modifyEmployee(Employee empleados[], int tam, Sector sectors[], int tamSector);;
+int chooseSector(Sector sectors[], int tam);
+void getDescription(Sector sectors[], int tamSector, int sector, char array[]);
+int menu();
 
 int main()
 {
-    char seguir='s';
-    int opcion=0;
-    Employee employee[CANT];
-    initEmployees(employee, CANT);
 
-    while(seguir=='s')
+    char seguir = 's';
+    Employee list[1000];
+    Sector sectors[] = {
+        {1, "RRHH"},
+        {2, "Ventas"},
+        {3, "Compras"},
+        {4, "Contable"},
+        {5, "Sistemas"}
+        };
+
+    initEmployees(list, 1000);
+
+
+    do
     {
-        ordenar(employee, CANT);
-
-        fflush(stdin);
-        system("cls");
-        printf("1- Alta empleado\n");
-        printf("2- Modificar empleado\n");
-        printf("3- Baja empleado\n");
-        printf("4- Informar empleados\n\n");
-        printf("5- Salir\n");
-
-        scanf("%d",&opcion);
-
-        switch(opcion)
+        switch(menu())
         {
-            case 1:
-                addEmployee(employee, CANT);
-                system("pause");
-                break;
 
-            case 2:
-                removeEmployee(employee, CANT);
-                system("pause");
-                break;
-
-            case 3:
-                modifyEmployee(employee, CANT);
-                system("pause");
-                break;
-
-            case 4:
-                sortEmployee(employee, CANT);
-                system("pause");
-                break;
-
-            case 5:
-                seguir = 'n';
-                break;
-
-            default:
-                printf("Opcion no valida, por favor reingrese una opcion de la lista.\n");
-                system("pause");
+        case 1:
+            addEmployees(list, 1000, sectors, 5);
+            system("pause");
+            break;
+        case 2:
+            modifyEmployee(list, 1000, sectors, 5);
+            break;
+        case 3:
+            removeEmployee(list, 1000, sectors, 5);
+            break;
+        case 4:
+            sortEmployeeByName(list, 1000, sectors, 5);
+            system("pause");
+            break;
+        case 5:
+            seguir = 'n';
+            break;
+        default:
+            printf("\nIngrese una opcion valida por favor.\n\n");
+            system("pause");
         }
+
     }
+    while(seguir == 's');
+
+
 
     return 0;
 }
 
-void intializeEmployee(Employee vec[], int CANT)//Inicializa todos los estados en 1 del array Persona
+void initEmployees( Employee x[], int tam)
 {
-    for(int i=0; i < CANT; i++)
+    for(int i=0; i < tam; i++)
     {
-        vec[i].isEmpty = 1;
+        x[i].isEmpty = 0;
     }
 }
 
-void addEmployee(Employee vec[], int CANT)//Alta de persona
-{
-    Employee employee;//Inicializada variable de estructura
-    int indice;
-    int esta;
-    char name[51];
-    char lastName[51];
-    int aux[51];
-    float salary;
-    int sector;
-
-    system("cls");
-    printf("---->Alta persona<----\n\n");
-
-    indice = obtenerEspacioLibre(vec, CANT);//Comprobacion de espacio disponible en array
-
-    if(indice == -1)
-    {
-        printf("\nEl sistema se encuentra completo, no pueden agregrase nuevas personas.\n\n");
-    }
-
-    else
-    {
-        printf("Ingrese el nombre de la persona: ");
-        gets(name);
-        fflush(stdin);
-
-        if(validarCHAR(name) == 0)//Validacion de char
-        {
-            printf(" Por favor reingrese los datos\n");
-        }
-
-        else
-        {
-        strcpy(Employee.name, name);
-
-        printf("Ingrese el apellido de la persona: ");
-        gets(lastName);
-        fflush(stdin);
-
-        if(validarCHAR(lastName) == 0)//Validacion de char
-        {
-            printf(" Por favor reingrese los datos\n");
-        }
-
-        else
-        {
-        strcpy(Employee.lastNamename, lastName);
-
-        printf("Ingrese el salario de la persona: ");
-        scanf("%s", aux);
-        fflush(stdin);
-
-        Employee.salary = salary;
-        fflush(stdin);
-
-        vec[indice] = employee;
-
-        printf("\nAlta exitosa!\n\n");
-        }
-        }
-    }
-}
-
-void removeEmployee(Employee vec[], int CANT)//Baja logica de persona
-{
-    int id;
-    int aux[20];
-    int esta;
-    char confirma;
-
-    system("cls");
-    printf("---->Baja persona<----\n\n");
-
-    printf("Ingrese Id: ");
-    scanf("%s", aux);
-
-    id = validarInt(aux);//Validacion de Int
-
-    if(id == 0)
-    {
-        printf(" por favor reingrese los datos\n");
-    }
-
-    else
-    {
-
-        fflush(stdin);
-
-        esta = findEmployeeById(vec, CANT, id);//Devuelve si se encuentra ingresado el DNI cargado
-
-    if(esta == -1)
-    {
-        printf("\nEl Id %s no se encuentra cargado\n\n", id);
-
-    }
-
-    else
-    {
-        mostrarPersona(vec[esta]);//Devuelve los datos dentro del array correspondiente
-
-        printf("\nSegura que quiere dar de baja a esta persona?\n Ingrese si para continuar:");
-        fflush(stdin);
-        scanf("%c", &confirma);
-
-        if(confirma == 's')
-        {
-            vec[esta].isEmpty = 1;
-            printf("\nBaja exitosa!\n\n");
-        }
-
-        else
-        {
-            printf("\nSe ha cancelado la baja\n\n");
-        }
-
-    }
-    }
-}
-
-int findEmployeeById(Employee vec[], int CANT, int id)//Busqueda de los elementos dni dentro de los arrays
+int findAvailable( Employee x[], int tam)
 {
     int indice = -1;
 
-    for(int i=0; i < CANT; i++)
+    for(int i=0; i< tam; i++)
     {
-        if(vec[i].isEmpty == 0 && vec[i].id == id)//Si el estado del array es 0 y el dni ingresado es igual al dni dentro del array
+
+        if( x[i].isEmpty == 0)
         {
             indice = i;
             break;
         }
     }
-
-    return indice;//Devuelve el indice en el que se encuentra
+    return indice;
 }
 
-void sortEmployee(Employee vec[], int CANT) // Devuelve todos los elementos dentro del array ordenados por name
+int findEmployeeById(Employee x[], int tam, int Id)
 {
-
-void mostrarPersona(Employee emp)//Devuelve los datos dentro del array
-{
-    printf("  %d     %3d      %10d\n", emp.id, emp.name, emp.lastName, emp.salary);
-}
-    Employee auxiliar;
-    int i;
-    int j;
-
-    for(i=0;i<CANT;i++)
+    int indice = -1;
+    for(int i=0; i < tam; i++)
     {
 
-        for(j=i+1;j<CANT;j++)//Declaracion del for para el burbujeo
+
+        if( x[i].Id == Id && x[i].isEmpty == 1)
         {
+            indice = i;
+            break;
+        }
+    }
+    return indice;
+}
 
-            if(strcmp(vec[i].name, vec[j].name)>0)//Devuelve si el primer elemento es mayor que el segundo
+int menu()
+{
+    int opcion;
+    system("cls");
+    printf("ABM\n");
+    printf("\n");
+    printf("1- Alta\n");
+    printf("2- Modificar\n");
+    printf("3- Baja\n");
+    printf("4- Informar\n");
+    printf("5- Salir\n");
+    printf("\n\n");
+    printf("Ingrese opcion: ");
+    fflush(stdin);
+    scanf("%d", &opcion);
+
+    return opcion;
+}
+
+void addEmployees(Employee empleados[], int tam, Sector sectors[], int tamSector)
+{
+    system("cls");
+    Employee nuevoEmpleado;
+    int indice;
+    int esta;
+    int Id;
+
+    indice = findAvailable(empleados, tam);
+
+    if(indice == -1)
+    {
+        printf("No hay lugar\n\n");
+    }
+    else
+    {
+        printf("Ingrese Id: ");
+        scanf("%d", &Id);
+
+        esta = findEmployeeById(empleados, tam, Id);
+
+        if(esta != -1)
+        {
+            printf("Existe un empleado con el Id %d\n", Id);
+            printEmployee( empleados[esta], sectors, tamSector);
+        }
+        else{
+            nuevoEmpleado.Id = Id;
+
+            printf("Ingrese el nombre del empleado: ");
+            fflush(stdin);
+            gets(nuevoEmpleado.name);
+
+            printf("Ingrese el apellido del empleado: ");
+            fflush(stdin);
+            gets(nuevoEmpleado.lastName);
+
+            printf("Ingrese el salario del empleado: ");
+            fflush(stdin);
+            scanf("%f", &nuevoEmpleado.salary);
+
+            nuevoEmpleado.sector = chooseSector(sectors, 5);
+
+            if(nuevoEmpleado.sector == 0)
             {
-                auxiliar = vec[i];//Swap de los names
-                vec[i] = vec[j];
-                vec[j] = auxiliar;
-
+                printf("No existe ese sector, seleccione uno valido.\n");
             }
 
             else
             {
+            nuevoEmpleado.isEmpty = 1;
 
-            if(strcmp(vec[i].name, vec[j].name)== 0)
+            empleados[indice] = nuevoEmpleado;
 
-            {
-                if(vec[i].id < vec[j].id)// Swap del dni acorde al swap de los names
-                {
-                    auxiliar = vec[i];
-                    vec[i] = vec[j];
-                    vec[j] = auxiliar;
-                }
-
-                else if(vec[i].id < vec[j].id)// Swap de la edad acorde a los names
-                {
-                    auxiliar = vec[i];
-                    vec[i] = vec[j];
-                    vec[j] = auxiliar;
-                }
-
-
-            }
-
+            printf("Alta exitosa.");
             }
         }
     }
+
+}
+
+void printEmployee(Employee emp, Sector sectors[], int tamSector)
+{
+    char description[20];
+
+    getDescription(sectors, tamSector, emp.sector, description);
+
+    printf("%d %s %s %.2f %s \n\n", emp.Id, emp.name, emp.lastName, emp.salary, description);
+
+}
+
+
+void sortEmployeeByName(Employee nomina[], int tam, Sector sectors[], int tamSector)
+{
+    for(int i=0; i< tam; i++)
+    {
+        if( nomina[i].isEmpty == 1)
+        {
+            printEmployee(nomina[i], sectors, tamSector);
+        }
+    }
+}
+
+void removeEmployee(Employee empleados[], int tam, Sector sectors[], int tamSector)
+{
+
+int Id;
+int indice;
+char borrar;
+
+printf("Ingrese Id: ");
+scanf("%d", &Id);
+
+indice = findEmployeeById(empleados, tam, Id);
+
+if( indice == -1){
+    printf("No hay ningun empleado con el Id %d\n", Id);
+}
+else{
+    printEmployee( empleados[indice], sectors, tamSector);
+
+    printf("\nConfirma borrado?: ");
+    fflush(stdin);
+    scanf("%c", &borrar);
+    if(borrar != 's'){
+        printf("Borrado cancelado\n\n");
+    }
+    else{
+        empleados[indice].isEmpty = 0;
+        printf("Se ha eliminado el empleado\n\n");
+    }
+    system("pause");
+}
+
+}
+
+void modifyEmployee(Employee empleados[], int tam, Sector sectors[], int tamSector)
+{
+
+int Id;
+int indice;
+char modificar;
+float newSalary;
+char charAux[20];
+int option;
+
+printf("Ingrese Id: ");
+scanf("%d", &Id);
+
+indice = findEmployeeById(empleados, tam, Id);
+
+if( indice == -1)
+{
+    printf("No hay ningun empleado con el Id %d\n", Id);
+    system("pause");
+}
+else{
+    printEmployee( empleados[indice], sectors, tamSector);
+
+    printf("Que desea modificar?\n");
+    printf("1- Nombre\n");
+    printf("2- Apellido\n");
+    printf("3- Salario\n");
+    printf("4- Sector\n");
+
+    scanf("%d", &option);
+
+    switch(option)
+    {
+    case 1:
+        printf("\nDesea modificar el nombre?('S' para continuar - 'N' para cancelar): ");
+        fflush(stdin);
+        scanf("%c", &modificar);
+        if(modificar != 's')
+        {
+            printf("Modificacion cancelada\n\n");
+        }
+
+        else
+        {
+            fflush(stdin);
+            printf("Ingrese el nuevo nombre: ");
+            gets(charAux);
+            strcpy(empleados[indice].name, charAux);
+            printf("Exito!\n\n");
+        }
+        system("pause");
+        break;
+
+    case 2:
+        printf("\nDesea modificar el apellido?('S' para continuar - 'N' para cancelar): ");
+        fflush(stdin);
+        scanf("%c", &modificar);
+        if(modificar != 's')
+        {
+            printf("Modificacion cancelada\n\n");
+        }
+
+        else
+        {
+            fflush(stdin);
+            printf("Ingrese el nuevo apellido: ");
+            gets(charAux);
+            strcpy(empleados[indice].lastName, charAux);
+            printf("Exito!\n\n");
+        }
+        system("pause");
+        break;
+
+    case 3:
+        printf("\nDesea modificar el salario?('S' para continuar - 'N' para cancelar): ");
+        fflush(stdin);
+        scanf("%c", &modificar);
+        if(modificar != 's')
+        {
+            printf("Modificacion cancelada\n\n");
+        }
+
+        else
+        {
+            printf("Ingrese el nuevo salario: ");
+            scanf("%f", &newSalary);
+
+            empleados[indice].salary = newSalary;
+            printf("Exito!\n\n");
+        }
+        system("pause");
+        break;
+
+    case 4:
+
+        printf("\nDesea modificar el sector?('S' para continuar - 'N' para cancelar): ");
+        fflush(stdin);
+        scanf("%c", &modificar);
+        if(modificar != 's')
+        {
+            printf("Modificacion cancelada\n\n");
+        }
+
+        else
+        {
+            empleados[indice].sector = chooseSector(sectors, 5);
+            printf("Exito!\n\n");
+        }
+
+        system("pause");
+        break;
+
+    default:
+        printf("Ingrese una opcion valida");
+
+
+    }
+}
+}
+
+
+int chooseSector(Sector sectors[], int tam)
+{
+    int sector;
+    printf("\nSectores\n\n");
+    for(int i=0; i < tam; i++){
+        printf("%d %s\n", sectors[i].id, sectors[i].description);
+    }
+    printf("\nSeleccione sector: ");
+    scanf("%d", &sector);
+
+    if(sector >= 6 || sector < 1)
+    {
+        sector = 0;
+    }
+
+    return sector;
+
+}
+
+void getDescription(Sector sectors[], int tamSector, int sector, char array[])
+{
+
+    for(int i=0; i < tamSector; i++){
+        if( sectors[i].id == sector){
+
+            strcpy(array, sectors[i].description);
+            break;
+        }
+    }
+
+
+}
+
+int validarCHAR (char descripcionProducto [])
+{
+    int i;
+    int letras;
+    letras = strlen(descripcionProducto);
+
+    if(letras > 50)
+    {
+        printf("La descripcion del producto es demasiado larga.\n");
+        return 0;
+    }
+
+    for (i=0; i<letras; i++)
+    {
+        if(!(isalpha(descripcionProducto[i])))
+        {
+            if(descripcionProducto [i] != ' ')
+            {
+                    printf("La descripcion del producto no es valida.\n");
+                    return 0;
+            }
+        }
+    }
+
+    return 1;
 }

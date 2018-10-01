@@ -1,29 +1,7 @@
 # depslib dependency file v1.0
-1525830222 source:c:\users\ruby\desktop\tp2\funciones.c
+1538402367 source:c:\users\alumno\desktop\asd123\tps\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-
-1525830222 source:c:\users\ruby\desktop\tp2\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"funciones.h"
-
-1525830222 c:\users\ruby\desktop\tp2\funciones.h
-
-1525830222 source:d:\programmer\tp2\funciones.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1525830222 source:d:\programmer\tp2\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"funciones.h"
-
-1525830222 d:\programmer\tp2\funciones.h
-
-1537973770 source:c:\users\alumno\desktop\asd\tps\tp2\funciones.c
+	<conio.h>
 
