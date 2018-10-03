@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1538579820 source:c:\users\alumno\desktop\final\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
+1538578153 source:c:\users\alumno\desktop\final\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+

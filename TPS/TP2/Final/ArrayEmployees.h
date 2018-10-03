@@ -1,6 +1,6 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
-#include "funciones.c"
+#include "ArrayEmployees.c"
 
 typedef struct
 {

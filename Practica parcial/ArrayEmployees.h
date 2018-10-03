@@ -4,16 +4,43 @@
 
 typedef struct
 {
+    int idMenu;
+    char descripcion[51];
+    float importe;
+}eMenu;
+
+
+typedef struct
+{
+    int dia;
+    int mes;
+    int anio;
+}eFecha;
+
+
+typedef struct
+{
     int Id;
     char name[20];
     char lastName[20];
+    char sexo;
     float salary;
+    eFecha fechaDeIngreso;
     int sector;
     int isEmpty;
-} Employee;
+}Employee;
 
 
-typedef struct{
+typedef struct
+{
+   int idAlmuerzo;
+   eMenu idMenu;
+   Employee Id;
+   eFecha fechaAlmuerzo;
+}eAlmuerzo
+
+typedef struct
+{
     int id;
     char description[20];
 }Sector;
