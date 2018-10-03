@@ -196,7 +196,6 @@ int validarInt(char aux[])
 
 float validarNumeroFlotante(char mensaje[])
 {
-    /*sueldo=validarNumeroFlotante("ingrese un sueldo: ")*/
     int validar;
     float numero;
     int i;
